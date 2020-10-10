@@ -1,45 +1,52 @@
-//1.引入vue
 import Vue from 'vue'
-// 2.引入路由文件
 import VueRouter from 'vue-router'
 
-
-//实现懒加载模式
 const Home = () =>
-    import ('../views/home/Home')
-const Cart = () =>
-    import ('../views/cart/Cart')
+    import ('views/home/Home')
 const Category = () =>
-    import ('../views/category/Category')
+    import ('views/category/Category')
+const Cart = () =>
+    import ('views/cart/Cart')
 const Profile = () =>
-    import ('../views/profile/Profile')
-    // 1.安装插件
+    import ('views/profile/Profile')
+const Detail = () =>
+    import ('views/detail/Detail')
+
+// 1.安装VueRouter
 Vue.use(VueRouter)
-    //2.创建VueRouter对象
+
+// 2.配置路由信息
 const routes = [{
-        //    重定向
-        path: '',
+        path: '/',
         redirect: '/home'
-    }, {
+    },
+    {
         path: '/home',
         component: Home
     },
     {
         path: '/category',
         component: Category
-    }, {
+    },
+    {
         path: '/cart',
         component: Cart
-    }, {
+    },
+    {
         path: '/profile',
         component: Profile
+    },
+    {
+        path: '/detail',
+        component: Detail
     }
 ]
+
+// 3.创建路由对象
 const router = new VueRouter({
-    //配置路由和组件之间的映射关系
-    routes,
-    mode: 'history'
+    mode: 'history',
+    routes
 })
 
-//将router对象传入到Vue实例中
+// 4.导出
 export default router

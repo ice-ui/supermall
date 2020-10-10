@@ -1,15 +1,16 @@
-// 首先导入request
-import { request } from './request'
+import axios from './axios'
 
-// Home.vue面向home.js开发
+export const BANNER = 'banner'
+export const RECOMMEND = 'recommend'
+
 export function getHomeMultidata() {
-    return request({
+    return axios({
         url: '/home/multidata'
     })
 }
 
-export function getHomeGoods(type, page) {
-    return request({
+export function getHomeData(type, page) {
+    return axios({
         url: '/home/data',
         params: {
             type,
